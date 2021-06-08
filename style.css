@@ -1,0 +1,38 @@
+*{box-sizing: border-box; padding: 0; margin: 0;}
+body{font-family: Verdana, sans-serif; margin: 0;}
+.myslide{display: none;}
+img{vertical-align: middle;}
+.wrap{width: 100%; height: auto;}
+
+/* Slideshow container */
+.slideshow-container{max-width: 1000px; position: relative; margin: auto; border: 1px solid; overflow: hidden; height: 400px;}
+
+/* Next & Previous button */
+.img-btn{display: flex; justify-content: space-between; position: absolute; top: 50%; width: 100%;}
+.prev, .next{cursor: pointer;  padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 18px; transition: all 0.4s; border-radius: 0 3px 3px 0; user-select: none; }
+
+.next{border-radius: 3px 0 0 3px;}
+.prev:hover, .next:hover{background: rgba(0, 0, 0, 0.8);}
+
+/* Caption text */
+.text{color: #fff; font-size: 15px; position: absolute; bottom: 8px; width: 100%; text-align: center;}
+
+/* number text */
+.numbertext{position: absolute; top: 10px; left: 10px; color: #fff; font-size: 15px;}
+
+/* images Style Code */
+img{width: 100%; height: auto; margin: auto; background-size: cover;}
+
+/* The Dot Style Code */
+.dot-wrap{display: flex; justify-content: center; margin-top: 10px;}
+.dot{cursor: pointer; height: 15px; width: 15px; border-radius: 50%; background-color: #ccc; display: inline-block; margin: 0 10px; transition: all 0.4s;}
+
+.dot:hover, .active{background: #444;}
+
+/* animation style */
+.fade{animation-name: fade; animation-duration: 1.5s; transition: all 0.4s fade;}
+
+@keyframes fade {
+  from {opacity: 0.4}
+  to {opacity: 1}
+}
