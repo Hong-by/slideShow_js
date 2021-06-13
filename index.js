@@ -16,10 +16,10 @@ let move = click; // 슬라이드 쇼 변수
 
 //슬라이드 출력
 function slideimg() {
-  slide[move].style.display = 'block';
-  dots[move].classList.add('active');
-  numbertxt[move].textContent = `${move+1} / ${slide.length}`;
-  contxt[move].textContent = `Cruella ${move+1}`;
+  slide[click].style.display = 'block';
+  dots[click].classList.add('active');
+  numbertxt[click].textContent = `${click+1} / ${slide.length}`;
+  contxt[click].textContent = `Cruella ${click+1}`;
 };
 slideimg();
 
@@ -34,31 +34,29 @@ const clearSlide = () => {
 //이미지 슬라이드 기능
 function slideShow(){
   clearSlide();
+  
+  click += 1;
 
-
-  if(move > slide.length-1){
-    move = 0;
-  } else if (move < 0){
-    move=slide.length-1;
+  if(click > slide.length-1){
+    click = 0;
+  } else if (click < 0){
+    click=slide.length-1;
   };
+
   slideimg();
-  move += 1;
-  
-  let stop;
-  stop = setTimeout("slideShow()", 2000);
-
-  
-  document.querySelector('section').addEventListener("mouseover", ()=>{
-    clearTimeout(stop);
-
-  });
-  document.querySelector('section').addEventListener("mouseout", ()=>{
-    stop = setTimeout("slideShow()", 2000);
-
-  });
-  return move;
+  return click;
 };
-slideShow();
+
+let start = setInterval(slideShow, 2000);
+
+document.querySelector('section').addEventListener("mouseover", ()=>{
+  clearInterval(start);
+});
+
+document.querySelector('section').addEventListener("mouseout", ()=>{
+  start = setInterval(slideShow, 2000);
+});
+
 
 //이전 버튼 클릭시
 prev.addEventListener('click', function(){
@@ -67,8 +65,9 @@ prev.addEventListener('click', function(){
   if (click < 0){
     click=slide.length-1;
   }
-  move = click;
+  // move = click;
   slideimg();
+  return click;
 
 });
 //다음 버튼 클릭시
@@ -78,8 +77,9 @@ next.addEventListener('click', function(){
   if(click > slide.length-1){
     click = 0;
   }
-  move = click;
+  // move = click;
   slideimg();
+  return click;
 
 });
 
@@ -94,9 +94,14 @@ for(let n = 0; n < dots.length; n++){
 //닷 버튼 클릭시 슬라이드 이동
 function activeDot(n){
   clearSlide();
-  move = n;
+  click = n;
   slideimg();
+  return click;
 };
+
+
+
+
 
 
 
